@@ -17,8 +17,6 @@
   under the License.
  */
 
-//model/comments.js
-
 'use strict'
 
 var mongoose = require('mongoose');

@@ -2,7 +2,7 @@
   "port": 3000,
   "services": {
   	"compose-for-mongodb": [{
-  		"uri": "mongodb://localhost/test"
+  		"credentials": {"uri": "mongodb://localhost/test"}
   	}]
   }
 }

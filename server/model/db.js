@@ -2,11 +2,15 @@ const mongoose = require('mongoose');
 const cfenv = require('cfenv');
 const logger = require('log4js').getLogger('db');
 const localConfig = require('./../config/local');
-const appenv = cfenv.getAppEnv({
-    vcap: localConfig
-});
-const credentials = appenv.services["compose-for-mongodb"][0];
+const appenv = cfenv.getAppEnv({ vcap: localConfig });
+const services = appenv.services;
+const credentials = services["compose-for-mongodb"][0].credentials;
 const uri = credentials.uri;
+
+logger.info(`appenv: ${JSON.stringify(appenv)}`);
+logger.info(`services: ${JSON.stringify(services)}`);
+logger.info(`credentials: ${JSON.stringify(credentials)}`);
+logger.info(`mongdb uri: ${uri}`);
 
 const options = {
     useMongoClient: true
@@ -14,12 +18,14 @@ const options = {
 
 if (credentials.ca_certificate_base64) {
     const ca = [new Buffer(credentials.ca_certificate_base64, 'base64')];
-    options.mongos = {
+    Object.assign(options, {
         ssl: true,
         sslValidate: true,
-        sslCA: ca         
-    };
+        sslCA: ca
+    });
 }
+
+mongoose.Promise = Promise;
 
 mongoose.connect(uri, options);
 mongoose.connection.on('connected', () => logger.info(`Mongoose connected to ${uri}`));

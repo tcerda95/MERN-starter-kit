@@ -94,7 +94,7 @@ Note, when running the project with native commands in either dev or release mod
     
 2. run project test cases with command:
     ```
-    idt test
+    npm test
     ```
 	This runs the project's unit tests with mocha. 
 	
