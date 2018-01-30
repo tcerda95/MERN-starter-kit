@@ -1,0 +1,12 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: MongoDbExpressReactNodeQOEJR
+  buildpack: sdk-for-nodejs
+  command: npm start
+  memory: 256M
+  domain: mybluemix.net
+  host: MERN-train
+  services:
+    - MERN-train
