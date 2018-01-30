@@ -2,8 +2,4 @@
 // Do not modify it as it might get overridden
 module.exports = function(app){
   
-    require('./public')(app);
-  
-    require('./health')(app);
-    require('./mongo')(app);
 };  
