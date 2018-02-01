@@ -37,9 +37,11 @@
   },
   "devDependencies": {
     "chai": "^4.0.0",
+    "eslint": "^4.16.0",
+    "eslint-plugin-react": "^7.6.1",
     "mocha": "^3.4.2",
-    "nyc": "^10.3.2",
     "nodemon": "^1.12.1",
+    "nyc": "^10.3.2",
     "react-scripts": "0.9.5"
   },
   "proxy": "http://localhost:3100"

@@ -4,7 +4,7 @@ const logger = require('log4js').getLogger('db');
 const localConfig = require('./../config/local');
 const appenv = cfenv.getAppEnv({ vcap: localConfig });
 const services = appenv.services;
-const credentials = services["compose-for-mongodb"][0].credentials;
+const credentials = services['compose-for-mongodb'][0].credentials;
 const uri = credentials.uri;
 
 const options = {
