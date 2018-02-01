@@ -1,2 +1,3 @@
+tl: npm run watch
 web: react-scripts start
-api: nodemon server/server.js
+api: nodemon --ignore 'test/*.js' -q server/server.js

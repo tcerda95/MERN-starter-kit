@@ -18,104 +18,103 @@
  */
 
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import 'bulma/css/bulma.css';
 
 class CommentForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: ''
+        };
 
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
 
-  }
-
-  handleTextChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  handleKeyPress(e) {
-    if (e.key === 'Enter') {
-      this.handleSubmit(e);
-    }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    let text = this.state.text.trim();
-    if (!text) {
-      console.log(`Missing text: ${text}`);
-      return;
     }
 
-    this.props.onCommentSubmit(
-      {
-        text: text
-      });
+    handleTextChange(e) {
+        this.setState({ text: e.target.value });
+    }
 
-    this.setState({ text: '' });
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.handleSubmit(e);
+        }
+    }
 
-  }
+    handleSubmit(e) {
+        e.preventDefault();
+        let text = this.state.text.trim();
+        if (!text)
+            return;
 
-  handleLogout(e) {
-    e.preventDefault();
-    this.props.onLogout();
-  }
+        this.props.onCommentSubmit({ text: text });
+        this.setState({ text: '' });
+    }
 
-  render() {
-    return (
-      <article className="media">
-        <figure className="media-left">
-          <p className="image is-64x64">
-            <img alt="Avatar" src={this.props.imageURL} />
-          </p>
-        </figure>
-        <div className="media-content">
-          <div className="field">
-            <p className="control">
-              <textarea
-                className="textarea"
-                placeholder='Add comment...'
-                value={this.state.text}
-                onChange={this.handleTextChange}
-                onKeyPress={this.handleKeyPress}
-              />
-            </p>
-          </div>
+    handleLogout(e) {
+        e.preventDefault();
+        this.props.onLogout();
+    }
 
-          <nav className="level">
-            <div className="level-left">
-              <div className="level-item">
-                 <a
-                className="button is-info"
-                type='submit'
-                value='Post'
-                onClick={this.handleSubmit}
-              >Submit</a>
+    render() {
+        return (
+            <article className="media">
+                <figure className="media-left">
+                    <p className="image is-64x64">
+                        <img alt="Avatar" src={this.props.imageURL} />
+                    </p>
+                </figure>
+                <div className="media-content">
+                    <div className="field">
+                        <p className="control">
+                            <textarea
+                                className="textarea"
+                                placeholder='Add comment...'
+                                value={this.state.text}
+                                onChange={this.handleTextChange}
+                                onKeyPress={this.handleKeyPress}
+                            />
+                        </p>
+                    </div>
+
+                    <nav className="level">
+                        <div className="level-left">
+                            <div className="level-item">
+                                <a
+                                    className="button is-info"
+                                    type='submit'
+                                    value='Post'
+                                    onClick={this.handleSubmit}
+                                >Submit</a>
+                            </div>
+                        </div>
+
+                        <div className="level-right">
+                            <div className="level-item">
+                                <a
+                                    className="button is-info"
+                                    type='submit'
+                                    value='Logout'
+                                    onClick={this.handleLogout}
+                                >Logout</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-              </div>
 
-             <div className="level-right">
-              <div className="level-item">
-                 <a
-                className="button is-info"
-                type='submit'
-                value='Logout'
-                onClick={this.handleLogout}
-              >Logout</a>
-                </div>
-                </div>
-          </nav>
-        </div>
-
-      </article >
-    )
-  }
+            </article >
+        );
+    }
 }
+
+CommentForm.propTypes = {
+    onCommentSubmit: PropTypes.func.isRequired,
+    onLogout: PropTypes.func.isRequired,
+    imageURL: PropTypes.string
+};
 
 export default CommentForm;

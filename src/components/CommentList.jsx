@@ -18,32 +18,38 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Comment from './Comment';
 
 import 'bulma/css/bulma.css';
 
 class CommentList extends Component {
-  render() {
-    let commentNodes = this.props.data.map(comment => {
-      return (
-        <Comment
-          author={comment.author}
-          uniqueID={comment['_id']}
-          key={comment['_id']}
-          imageURL={comment['imageURL']}
-          twitter={comment['twitter']}
-          onCommentDelete={this.props.onCommentDelete}
-        >
-          {comment.text}
-        </Comment>
-      )
-    })
-    return (
-      <div>
-        {commentNodes}
-      </div>
-    )
-  }
+    render() {
+        let commentNodes = this.props.data.map(comment => {
+            return (
+                <Comment
+                    author={comment.author}
+                    uniqueID={comment['_id']}
+                    key={comment['_id']}
+                    imageURL={comment['imageURL']}
+                    twitter={comment['twitter']}
+                    onCommentDelete={this.props.onCommentDelete}
+                >
+                    {comment.text}
+                </Comment>
+            );
+        });
+        return (
+            <div>
+                {commentNodes}
+            </div>
+        );
+    }
 }
+
+CommentList.propTypes = {
+    data: PropTypes.array.isRequired,
+    onCommentDelete: PropTypes.func.isRequired
+};
 
 export default CommentList;

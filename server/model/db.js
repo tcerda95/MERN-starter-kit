@@ -22,7 +22,12 @@ if (credentials.ca_certificate_base64) {
 
 mongoose.Promise = Promise;
 
-mongoose.connect(uri, options);
+mongoose.connect(uri, options, err => {
+    if (err) {
+        logger.error(`Mongoose connection error: ${err}`);
+        process.exit(1);
+    }
+});
 mongoose.connection.on('connected', () => logger.info(`Mongoose connected to ${uri}`));
 mongoose.connection.on('error', (err) => logger.error(`Mongoose connection error: ${err}`));
 mongoose.connection.on('disconnected', () => logger.info(`Mongoose disconnected from: ${uri}`));

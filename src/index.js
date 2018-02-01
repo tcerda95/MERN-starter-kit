@@ -24,14 +24,14 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 
 ReactDOM.render(
-  <div>
-    <Hero />
-    <CommentBox 
-      url='/api/comments'
-      pollInterval={2000000} 
-    />
-    <Footer />
-  </div>
-  ,
-  document.getElementById('root')
+    <div>
+        <Hero />
+        <CommentBox 
+            url='/api/comments'
+            pollInterval={2000000} 
+        />
+        <Footer />
+    </div>
+    ,
+    document.getElementById('root')
 );

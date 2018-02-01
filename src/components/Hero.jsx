@@ -18,26 +18,26 @@
  */
 
 import React, { Component } from 'react';
-import 'bulma/css/bulma.css'
+import 'bulma/css/bulma.css';
 
 class Hero extends Component {
 
-  render() {
-    return (
-      <section className="hero is-info">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">
+    render() {
+        return (
+            <section className="hero is-info">
+                <div className="hero-body">
+                    <div className="container">
+                        <h1 className="title">
               Social Media Comments
-            </h1>
-            <h2 className="subtitle">
+                        </h1>
+                        <h2 className="subtitle">
               MERN application example
-            </h2>
-          </div>
-        </div>
-      </section>
-    )
-  }
+                        </h2>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 }
 
 export default Hero;

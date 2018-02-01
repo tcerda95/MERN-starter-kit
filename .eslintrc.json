@@ -2,20 +2,29 @@
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended", 
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
         },
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaVersion": 6
     },
     "plugins": [
         "react"
     ],
     "rules": {
+        "no-unused-vars": [
+            "error", 
+            { "vars": "all", "args": "none", "ignoreRestSiblings": false }
+        ],
         "indent": [
             "error",
             4
@@ -32,6 +41,10 @@
         "semi": [
             "error",
             "always"
+        ],
+        "no-console": [
+            "error",
+            { "allow": ["warn", "error"] }
         ]
     }
 }
