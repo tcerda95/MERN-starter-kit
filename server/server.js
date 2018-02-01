@@ -8,6 +8,8 @@ const log4js = require('log4js');
 const localConfig = require('./config/local.json');
 const path = require('path');
 const cfenv = require('cfenv');
+const serveStatic = require('serve-static');
+const revUtils = require('./services/revUtils');
 const cwd = process.cwd();
 
 const logger = log4js.getLogger(appName);
@@ -20,8 +22,13 @@ app.use(bodyParser.json());
 // Initialize database connection
 require('./model/db');
 
-// Serve static files
-app.use(express.static(path.join(cwd, 'build')));
+// Serve static revved files with uncoditional cache
+app.use(serveStatic(path.join(cwd, 'build'), {
+	setHeaders: (res, path) => {
+		if (revUtils.isRevved(path))
+			res.setHeader('Cache-Control', 'public, max-age=31536000');		
+	}
+}));
 
 // Set API endpoint
 const router = require('./routers/index');

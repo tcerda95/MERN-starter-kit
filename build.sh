@@ -1,5 +1,4 @@
 #!/bin/sh
 
-npm install --only=dev 
+npm install
 npm run build 
-npm prune --production

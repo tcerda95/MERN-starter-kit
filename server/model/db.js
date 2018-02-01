@@ -7,11 +7,6 @@ const services = appenv.services;
 const credentials = services["compose-for-mongodb"][0].credentials;
 const uri = credentials.uri;
 
-logger.info(`appenv: ${JSON.stringify(appenv)}`);
-logger.info(`services: ${JSON.stringify(services)}`);
-logger.info(`credentials: ${JSON.stringify(credentials)}`);
-logger.info(`mongdb uri: ${uri}`);
-
 const options = {
     useMongoClient: true
 };
