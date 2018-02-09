@@ -23,10 +23,10 @@ require('./model/db');
 
 // Serve static revved files with uncoditional cache
 app.use(serveStatic(path.join(cwd, 'build'), {
-    setHeaders: (res, path) => {
-        if (revUtils.isRevved(path))
-            res.setHeader('Cache-Control', 'public, immutable, max-age=31536000');      
-    }
+  setHeaders: (res, path) => {
+    if (revUtils.isRevved(path))
+      res.setHeader('Cache-Control', 'public, immutable, max-age=31536000');      
+  }
 }));
 
 // Set API endpoint
@@ -35,18 +35,18 @@ app.use('/api', router);
 
 // Route any non API and non static file to React Client Router for SPA development
 app.use((req, res) => {
-    res.sendFile(path.join(cwd, 'build', 'index.html'));
+  res.sendFile(path.join(cwd, 'build', 'index.html'));
 });
 
 const port = process.env.PORT || localConfig.port;
 app.listen(port, function(){
-    logger.info(`CWD: ${cwd}`);
-    logger.info(`MongoDbExpressReactNodeQOEJR listening on http://localhost:${port}/appmetrics-dash`);  
-    logger.info(`MongoDbExpressReactNodeQOEJR listening on http://localhost:${port}`);
+  logger.info(`CWD: ${cwd}`);
+  logger.info(`MongoDbExpressReactNodeQOEJR listening on http://localhost:${port}/appmetrics-dash`);  
+  logger.info(`MongoDbExpressReactNodeQOEJR listening on http://localhost:${port}`);
 });
 
 app.use(function (err, req, res) {
-    logger.error(err.message);
-    res.status(500);
-    res.json({ message: err.message });
+  logger.error(err.message);
+  res.status(500);
+  res.json({ message: err.message });
 });

@@ -8,25 +8,25 @@ const credentials = services['compose-for-mongodb'][0].credentials;
 const uri = credentials.uri;
 
 const options = {
-    useMongoClient: true
+  useMongoClient: true
 };
 
 if (credentials.ca_certificate_base64) {
-    const ca = [new Buffer(credentials.ca_certificate_base64, 'base64')];
-    Object.assign(options, {
-        ssl: true,
-        sslValidate: true,
-        sslCA: ca
-    });
+  const ca = [new Buffer(credentials.ca_certificate_base64, 'base64')];
+  Object.assign(options, {
+    ssl: true,
+    sslValidate: true,
+    sslCA: ca
+  });
 }
 
 mongoose.Promise = Promise;
 
 mongoose.connect(uri, options, err => {
-    if (err) {
-        logger.error(`Mongoose connection error: ${err}`);
-        process.exit(1);
-    }
+  if (err) {
+    logger.error(`Mongoose connection error: ${err}`);
+    process.exit(1);
+  }
 });
 mongoose.connection.on('connected', () => logger.info(`Mongoose connected to ${uri}`));
 mongoose.connection.on('error', (err) => logger.error(`Mongoose connection error: ${err}`));
