@@ -43,6 +43,9 @@
       "error",
       "always"
     ],
+    "no-useless-constructor": [
+      "error"
+    ],
     "no-console": [
       "error",
       { "allow": ["warn", "error"] }

@@ -21,31 +21,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'bulma/css/bulma.css';
 
-class CommentForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    };
-
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-
+export default class CommentForm extends Component {
+  static propTypes = {
+    onCommentSubmit: PropTypes.func.isRequired,
+    onLogout: PropTypes.func.isRequired,
+    imageURL: PropTypes.string
   }
 
-  handleTextChange(e) {
+  state = { text: '' }
+
+  handleTextChange = (e) => {
     this.setState({ text: e.target.value });
   }
 
-  handleKeyPress(e) {
+  handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       this.handleSubmit(e);
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     let text = this.state.text.trim();
     if (!text)
@@ -55,7 +50,7 @@ class CommentForm extends Component {
     this.setState({ text: '' });
   }
 
-  handleLogout(e) {
+  handleLogout = (e) => {
     e.preventDefault();
     this.props.onLogout();
   }
@@ -109,11 +104,3 @@ class CommentForm extends Component {
     );
   }
 }
-
-CommentForm.propTypes = {
-  onCommentSubmit: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  imageURL: PropTypes.string
-};
-
-export default CommentForm;

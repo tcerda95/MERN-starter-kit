@@ -23,14 +23,18 @@ import marked from 'marked';
 
 import 'bulma/css/bulma.css';
 
-class Comment extends Component {
+export default class Comment extends Component {
 
-  constructor(props) {
-    super(props);
-    this.deleteComment = this.deleteComment.bind(this);
+  static propTypes = {
+    uniqueID: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    twitter: PropTypes.string,
+    onCommentDelete: PropTypes.func.isRequired,
+    imageURL: PropTypes.string,
+    children: PropTypes.node    
   }
 
-  deleteComment(e) {
+  deleteComment = (e) => {
     e.preventDefault();
     let id = this.props.uniqueID;
     this.props.onCommentDelete(id);
@@ -72,7 +76,7 @@ class Comment extends Component {
           </div>
           <div>
             <button
-              onClick={ this.deleteComment } 
+              onClick={this.deleteComment} 
               className="delete"
             ></button>
           </div>
@@ -81,14 +85,3 @@ class Comment extends Component {
     );
   }
 }
-
-Comment.propTypes = {
-  uniqueID: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  twitter: PropTypes.string,
-  onCommentDelete: PropTypes.func.isRequired,
-  imageURL: PropTypes.string,
-  children: PropTypes.toString
-};
-
-export default Comment;

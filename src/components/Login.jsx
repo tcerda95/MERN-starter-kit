@@ -21,23 +21,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'bulma/css/bulma.css';
 
-class Login extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      author: 'Thomas J. Watson',
-      twitter: 'blueguy',
-      imageURL: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg'
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleAuthorChange = this.handleAuthorChange.bind(this);
-    this.handleTwitterChange = this.handleTwitterChange.bind(this);
-    this.handleImageURLChange = this.handleImageURLChange.bind(this);
+export default class Login extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired
   }
 
-  handleSubmit(e) {
+  state = {
+    author: 'Thomas J. Watson',
+    twitter: 'blueguy',
+    imageURL: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg'    
+  }
+
+  handleSubmit = (e) => {
     e.preventDefault();
     const author = this.state.author.trim();
     const twitter = this.state.twitter.trim();
@@ -54,15 +49,15 @@ class Login extends Component {
       });
   }
 
-  handleAuthorChange(e) {
+  handleAuthorChange = (e) => {
     this.setState({ author: e.target.value });
   }
 
-  handleTwitterChange(e) {
+  handleTwitterChange = (e) => {
     this.setState({ twitter: e.target.value });
   }
 
-  handleImageURLChange(e) {
+  handleImageURLChange = (e) => {
     this.setState({ imageURL: e.target.value });
   }
 
@@ -116,9 +111,3 @@ class Login extends Component {
     );
   }
 }
-
-Login.propTypes = {
-  onLogin: PropTypes.func.isRequired
-};
-
-export default Login;

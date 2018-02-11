@@ -23,8 +23,13 @@ import Comment from './Comment';
 
 import 'bulma/css/bulma.css';
 
-export default function CommentList(props) {
-  let commentNodes = props.data.map(comment => {
+CommentList.propTypes = {
+  data: PropTypes.array.isRequired,
+  onCommentDelete: PropTypes.func.isRequired
+};
+
+export default function CommentList({ data, onCommentDelete }) {
+  let commentNodes = data.map(comment => {
     return (
       <Comment
         author={comment.author}
@@ -32,7 +37,7 @@ export default function CommentList(props) {
         key={comment['_id']}
         imageURL={comment['imageURL']}
         twitter={comment['twitter']}
-        onCommentDelete={props.onCommentDelete}
+        onCommentDelete={onCommentDelete}
       >
         {comment.text}
       </Comment>
@@ -45,8 +50,3 @@ export default function CommentList(props) {
     </div>
   );
 }
-
-CommentList.propTypes = {
-  data: PropTypes.array.isRequired,
-  onCommentDelete: PropTypes.func.isRequired
-};

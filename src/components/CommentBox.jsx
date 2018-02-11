@@ -26,16 +26,10 @@ import Login from './Login';
 
 import 'bulma/css/bulma.css';
 
-class CommentBox extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
-    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
-    this.handleCommentDelete = this.handleCommentDelete.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+export default class CommentBox extends Component {
+  static propTypes = {
+    url: PropTypes.string.isRequired,
+    pollInterval: PropTypes.number.isRequired
   }
 
   state = {
@@ -43,7 +37,7 @@ class CommentBox extends Component {
     userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {}
   }
 
-  loadCommentsFromServer() {
+  loadCommentsFromServer = () => {
     axios.get(this.props.url)
       .then(res => {
         localStorage.setItem('comments', JSON.stringify(res.data));
@@ -54,7 +48,7 @@ class CommentBox extends Component {
       });
   }
 
-  handleCommentSubmit(comment) {
+  handleCommentSubmit = (comment) => {
     comment.imageURL = this.state.userInfo.imageURL;
     comment.twitter = this.state.userInfo.twitter;
     comment.author = this.state.userInfo.author;
@@ -70,7 +64,7 @@ class CommentBox extends Component {
       });
   }
 
-  handleLogin(loginInfo) {
+  handleLogin = (loginInfo) => {
     const userInfo = {
       author: loginInfo.author, 
       imageURL: loginInfo.imageURL,
@@ -88,7 +82,7 @@ class CommentBox extends Component {
       });
   }
 
-  handleLogout(e) {
+  handleLogout = (e) => {
     axios.post(`${this.props.url}/logout`)
       .then(res => {
         localStorage.removeItem('userInfo');
@@ -99,7 +93,7 @@ class CommentBox extends Component {
       });
   }
 
-  handleCommentDelete(id) {
+  handleCommentDelete = (id) => {
     let comments = this.state.data;
 
     let newComments = comments.filter((t) => {
@@ -124,29 +118,21 @@ class CommentBox extends Component {
       <section className="section">
         <div className="container">
           <CommentList 
-            data={ this.state.data }
-            onCommentDelete={ this.handleCommentDelete }
+            data={this.state.data}
+            onCommentDelete={this.handleCommentDelete}
           />
           <hr/>
           <CommentForm 
-            imageURL={ this.state.userInfo.imageURL }
-            onCommentSubmit={ this.handleCommentSubmit }
-            onLogout={ this.handleLogout }
+            imageURL={this.state.userInfo.imageURL}
+            onCommentSubmit={this.handleCommentSubmit}
+            onLogout={this.handleLogout}
           />
           <br/>
           <Login 
-            onLogin={ this.handleLogin }
+            onLogin={this.handleLogin}
           />
         </div>
       </section>
     );
   }
 }
-
-CommentBox.propTypes = {
-  url: PropTypes.string.isRequired,
-  pollInterval: PropTypes.number.isRequired
-};
-
-
-export default CommentBox;

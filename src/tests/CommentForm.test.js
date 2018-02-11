@@ -1,6 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import CommentForm from '../components/CommentForm';
+import { spyConsoleError, expectMissingProp, restoreConsoleError } from './utils/propTypes-utils.js';
 import { shallow } from 'enzyme';
 
 describe('React CommentForm testing', () => {
@@ -15,6 +16,16 @@ describe('React CommentForm testing', () => {
     onLogoutSpy = sinon.spy();
     preventDefaultSpy = sinon.spy();
     wrapper = shallow(<CommentForm onCommentSubmit={onCommentSubmitSpy} onLogout={onLogoutSpy} />);
+  });
+
+  it('should raise an error if any required props is missing', () => {
+    spyConsoleError();
+
+    const wrapper = shallow(<CommentForm />);
+    expectMissingProp('onCommentSubmit', 'CommentForm');
+    expectMissingProp('onLogout', 'CommentForm');
+
+    restoreConsoleError();
   });
 
   it('should have value "a" on keypress "a"', () => {

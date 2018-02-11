@@ -4,7 +4,7 @@
   "description": "A generated IBM Cloud application",
   "private": true,
   "engines": {
-    "node": "^6.9.0"
+    "node": "^9.4.0"
   },
   "watch": {
     "test": {
@@ -68,5 +68,5 @@
     "react-scripts": "^0.9.5",
     "sinon": "^4.2.2"
   },
-  "proxy": "http://localhost:3200"
+  "proxy": "http://localhost:3000"
 }
