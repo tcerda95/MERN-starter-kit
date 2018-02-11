@@ -2,22 +2,24 @@ const Comment = require('../model/comments');
 const responseService = require('../services/response');
 const ctrl = {};
 
-ctrl.listComments = (req, res) => {
-  Comment.find((err, comments) => {
-    if (err)
-      responseService.json(res, 500, err);
-    else
-      responseService.json(res, 200, comments);
-  });
+ctrl.listComments = async (req, res) => {
+  try {
+    const comments = await Comment.find();
+    responseService.json(res, 200, comments);
+  }
+  catch (err) {
+    responseService.json(res, 500, err);
+  }
 };
 
-ctrl.createComment = (req, res) => {
-  Comment.create(req.body, (err, comment) => {
-    if (err)
-      responseService.json(res, 400, err);
-    else
-      responseService.json(res, 201, comment);
-  });
+ctrl.createComment = async (req, res) => {
+  try {
+    const comment = await Comment.create(req.body);
+    responseService.json(res, 201, comment);
+  }
+  catch (err) {
+    responseService.json(res, 400, err);
+  }
 };
 
 module.exports = ctrl;

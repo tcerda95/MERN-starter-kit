@@ -1,50 +1,63 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true,
-        "jest": true
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended", 
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended", 
-        "plugin:react/recommended"
+    "sourceType": "module",
+    "ecmaVersion": 8
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      "error", 
+      { "vars": "all", "args": "none", "ignoreRestSiblings": false }
     ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true
-        },
-        "sourceType": "module",
-        "ecmaVersion": 6
-    },
-    "plugins": [
-        "react"
+    "indent": [
+      "error",
+      2
     ],
-    "rules": {
-        "no-unused-vars": [
-            "error", 
-            { "vars": "all", "args": "none", "ignoreRestSiblings": false }
-        ],
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single",
-            { "avoidEscape": true }
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-console": [
-            "error",
-            { "allow": ["warn", "error"] }
-        ]
-    }
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      { "avoidEscape": true }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": [
+      "error",
+      { "allow": ["warn", "error"] }
+    ],
+    "no-multi-spaces": [
+      "error",
+      { "ignoreEOLComments": true }
+    ],
+    "react/prefer-es6-class": [
+      "error",
+      "always"
+    ],
+    "react/prefer-stateless-function": [
+      "error",
+      { "ignorePureComponents": false }
+    ]
+  }
 }

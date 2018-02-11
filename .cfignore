@@ -1,5 +1,6 @@
 .git/
 node_modules/
-test/
+server/tests/
+src/tests/
 public/
 vcap-local.js

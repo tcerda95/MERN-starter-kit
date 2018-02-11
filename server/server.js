@@ -41,8 +41,8 @@ app.use((req, res) => {
 const port = process.env.PORT || localConfig.port;
 app.listen(port, function(){
   logger.info(`CWD: ${cwd}`);
-  logger.info(`MongoDbExpressReactNodeQOEJR listening on http://localhost:${port}/appmetrics-dash`);  
-  logger.info(`MongoDbExpressReactNodeQOEJR listening on http://localhost:${port}`);
+  logger.info(`Server listening on http://localhost:${port}/appmetrics-dash`);  
+  logger.info(`Server listening on http://localhost:${port}`);
 });
 
 app.use(function (err, req, res) {

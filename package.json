@@ -65,7 +65,8 @@
     "nodemon": "^1.12.1",
     "npm-watch": "^0.3.0",
     "nyc": "^10.3.2",
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^0.9.5",
+    "sinon": "^4.2.2"
   },
-  "proxy": "http://localhost:3100"
+  "proxy": "http://localhost:3200"
 }

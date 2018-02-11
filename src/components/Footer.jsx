@@ -17,31 +17,26 @@
   under the License.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import 'bulma/css/bulma.css';
 
-class Footer extends Component {
-
-  render() {
-    return (
-      <footer className="footer">
-        <div className="container">
-          <div className="content has-text-centered">
-            <p>
-              <strong>MERN example</strong><br/>
-        The source code is licensed
-              <a href="http://opensource.org/licenses/mit-license.php"> MIT</a>.
-            </p>
-            <p>
-              <a className="icon" href="https://github.com/IBM-Bluemix/node-MERN-stack">
-                <i className="fa fa-github"></i>
-              </a>
-            </p>
-          </div>
+export default function Footer(props) {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="content has-text-centered">
+          <p>
+            <strong>MERN example</strong><br/>
+      The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php"> MIT</a>.
+          </p>
+          <p>
+            <a className="icon" href="https://github.com/IBM-Bluemix/node-MERN-stack">
+              <i className="fa fa-github"></i>
+            </a>
+          </p>
         </div>
-      </footer>
-    );
-  }
+      </div>
+    </footer>
+  );  
 }
-
-export default Footer;

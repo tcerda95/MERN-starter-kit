@@ -83,12 +83,12 @@ class Comment extends Component {
 }
 
 Comment.propTypes = {
-  uniqueID: PropTypes.number.isRequired,
+  uniqueID: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  twitter: PropTypes.string.isRequired,
+  twitter: PropTypes.string,
   onCommentDelete: PropTypes.func.isRequired,
   imageURL: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.toString
 };
 
 export default Comment;

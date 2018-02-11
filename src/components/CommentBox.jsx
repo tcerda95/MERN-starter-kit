@@ -31,27 +31,27 @@ class CommentBox extends Component {
   constructor(props) {
     super(props);
 
-    const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
-    const data = JSON.parse(localStorage.getItem('comments')) || [];
-    
-    this.state = { 
-      data: data,
-      userInfo: userInfo
-    };
-
     this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.handleCommentDelete = this.handleCommentDelete.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+  }
 
+  state = {
+    data: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
+    userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {}
   }
 
   loadCommentsFromServer() {
-    axios.get(this.props.url).then(res => {
-      localStorage.setItem('comments', JSON.stringify(res.data));
-      this.setState({ data: res.data });
-    });
+    axios.get(this.props.url)
+      .then(res => {
+        localStorage.setItem('comments', JSON.stringify(res.data));
+        this.setState({ data: res.data });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   handleCommentSubmit(comment) {
@@ -102,7 +102,7 @@ class CommentBox extends Component {
   handleCommentDelete(id) {
     let comments = this.state.data;
 
-    let newComments = comments.filter( (t) => {
+    let newComments = comments.filter((t) => {
       return t._id !== id; 
     });
 
