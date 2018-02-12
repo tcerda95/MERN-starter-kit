@@ -28,7 +28,7 @@
     "eject": "react-scripts eject",
     "client-reload": "react-scripts start",
     "server-reload": "nodemon server/server.js",
-    "lint": "eslint --ext .js --ext .jsx --color --ignore-path .gitignore  .",
+    "lint": "eslint --ext .js --ext .jsx --color .",
     "lint:fix": "npm run lint -- --fix",
     "pretest": "npm run lint",
     "watch": "npm-watch"
