@@ -10,8 +10,7 @@ describe('Comment Box', () => {
     const comments = ['a comment', 'another comment'];
 
     // Must setup stub before shallow rendering since request is done on compoentDidMount
-    sinon.stub(axios, 'get');
-    axios.get.returns(Promise.resolve({ data: comments }));
+    sinon.stub(axios, 'get').resolves({ data: comments });
 
     const wrapper = shallow(<CommentBox url={url} pollInterval={10000} />);
 

@@ -31,7 +31,7 @@ describe('Comments Controller', () => {
 
     it('should return status 200 with the comment list as json on success', async () => {
       const expectedComments = ['a comment', 'another comment'];
-      Comment.find.returns(Promise.resolve(expectedComments));
+      Comment.find.resolves(expectedComments);
 
       try {
         await ctrl.listComments(req, res);
@@ -46,7 +46,8 @@ describe('Comments Controller', () => {
       const expectedError = {
         message: 'fatal error'
       };
-      Comment.find.returns(Promise.reject(expectedError));
+      
+      Comment.find.rejects(expectedError);
 
       try {
         await ctrl.listComments(req, res);
