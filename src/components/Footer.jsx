@@ -20,7 +20,7 @@
 import React from 'react';
 import 'bulma/css/bulma.css';
 
-export default function Footer(props) {
+export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">

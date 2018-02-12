@@ -20,6 +20,7 @@ exports[`React Hero testing is better snapshot testing for regression render tes
       >
         MERN application example
       </h2>
+      <NavLinks />
     </div>
   </div>
 </section>

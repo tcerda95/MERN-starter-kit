@@ -50,7 +50,8 @@
     "prop-types": "^15.6.0",
     "raf": "^3.4.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.1",
@@ -72,19 +73,21 @@
     "nodemon": "^1.12.1",
     "npm-watch": "^0.3.0",
     "nyc": "^10.3.2",
-    "react-scripts": "^0.9.5",
+    "react-scripts": "^1.1.1",
     "sinon": "^4.2.2"
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/src/tests/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "setupFiles": ["<rootDir>/src/tests/config/setupTests.js", "<rootDir>/server/tests/config/setupTests.js"]
+    "setupFiles": [
+      "<rootDir>/src/tests/config/setupTests.js",
+      "<rootDir>/server/tests/config/setupTests.js"
+    ]
   },
   "proxy": "http://localhost:3000"
 }

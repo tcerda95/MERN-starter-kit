@@ -19,7 +19,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import marked from 'marked';
 
 import 'bulma/css/bulma.css';
 
@@ -39,11 +38,6 @@ export default class Comment extends Component {
     this.props.onCommentDelete(id);
   }
 
-  rawMarkup() {
-    const rawMarkup = marked(this.props.children.toString());
-    return { __html: rawMarkup };
-  }
-
   render() {
     return (
       <div className="box">
@@ -57,7 +51,6 @@ export default class Comment extends Component {
             <div className="content">
               <strong>{this.props.author}</strong> <small>@{this.props.twitter}</small> <small>31m</small>
               <br />
-              <span dangerouslySetInnerHTML={this.rawMarkup()} />
             </div>
             <nav className="level is-mobile">
               <div className="level-left">
