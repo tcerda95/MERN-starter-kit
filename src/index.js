@@ -28,7 +28,7 @@ ReactDOM.render(
   <div>
     <Hero />
     <CommentBox 
-      url='/api/comments'
+      url="/api/comments"
       pollInterval={2000000} 
     />
     <Footer />

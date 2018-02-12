@@ -5,7 +5,9 @@ import { shallow } from 'enzyme';
 describe('React Hero testing', () => {
   let wrapper;
 
-  beforeEach(() => { wrapper = shallow(<Hero />); });
+  beforeEach(() => { 
+    wrapper = shallow(<Hero />); 
+  });
 
   it('renders two <div>', () => {
     expect(wrapper.find('div')).toHaveLength(2);

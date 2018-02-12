@@ -30,27 +30,27 @@ export default class CommentForm extends Component {
 
   state = { text: '' }
 
-  handleTextChange = (e) => {
+  handleTextChange = e => {
     this.setState({ text: e.target.value });
   }
 
-  handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+  handleKeyPress = e => {
+    if (e.key === 'Enter')
       this.handleSubmit(e);
-    }
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
-    let text = this.state.text.trim();
+    const text = this.state.text.trim();
+    
     if (!text)
       return;
 
-    this.props.onCommentSubmit({ text: text });
+    this.props.onCommentSubmit({ text });
     this.setState({ text: '' });
   }
 
-  handleLogout = (e) => {
+  handleLogout = e => {
     e.preventDefault();
     this.props.onLogout();
   }
@@ -68,7 +68,7 @@ export default class CommentForm extends Component {
             <p className="control">
               <textarea
                 className="textarea"
-                placeholder='Add comment...'
+                placeholder="Add comment..."
                 value={this.state.text}
                 onChange={this.handleTextChange}
                 onKeyPress={this.handleKeyPress}
@@ -81,10 +81,12 @@ export default class CommentForm extends Component {
               <div className="level-item">
                 <a
                   className="button is-info"
-                  type='submit'
-                  value='Post'
+                  type="submit"
+                  value="Post"
                   onClick={this.handleSubmit}
-                >Submit</a>
+                >
+                  Submit
+                </a>
               </div>
             </div>
 
@@ -92,10 +94,12 @@ export default class CommentForm extends Component {
               <div className="level-item">
                 <a
                   className="button is-info"
-                  type='submit'
-                  value='Logout'
+                  type="submit"
+                  value="Logout"
                   onClick={this.handleLogout}
-                >Logout</a>
+                >
+                  Logout
+                </a>
               </div>
             </div>
           </nav>

@@ -3,7 +3,7 @@ const Comment = require('../../model/comments');
 const sinon = require('sinon');
 
 describe('Comments Controller', () => {
-  const assert = sinon.assert;
+  const { assert } = sinon;
   let req;
   let res;
 
@@ -57,6 +57,4 @@ describe('Comments Controller', () => {
       }
     });
   });
-
-
 });

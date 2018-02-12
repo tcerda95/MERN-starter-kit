@@ -19,9 +19,15 @@
     "ecmaVersion": 8
   },
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y",
+    "import"
   ],
   "rules": {
+    // Eslint
+    "camelcase": [
+      "error"
+    ],
     "no-unused-vars": [
       "error", 
       { "vars": "all", "args": "none", "ignoreRestSiblings": false }
@@ -29,6 +35,71 @@
     "indent": [
       "error",
       2
+    ],
+    "prefer-const": [
+      "error"
+    ],
+    "no-loop-func": [
+      "error"
+    ],
+    "no-eval": [
+      "error"
+    ],
+    "new-cap": [
+      "error",
+      { "capIsNew": false }
+    ],
+    "no-new-func": [
+      "error"
+    ],
+    "no-var": [
+      "error"
+    ],
+    "no-duplicate-imports": [
+      "error"
+    ],
+    "func-style": [
+      "warn",
+      "expression",
+      { "allowArrowFunctions": true }
+    ],
+    "no-new-object": [
+      "error"
+    ],
+    "no-array-constructor": [
+      "error"
+    ],
+    "no-useless-escape": [
+      "error"
+    ],
+    "array-callback-return": [
+      "error"
+    ],
+    "prefer-arrow-callback": [
+      "error"
+    ],
+    "arrow-body-style": [
+      "error"
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "no-confusing-arrow": [
+      "error"
+    ],
+    "prefer-destructuring": [
+      "warn",
+      { "array": false, "object": true }
+    ],
+    "object-shorthand": [
+      "warn"
+    ],
+    "prefer-template": [
+      "error"
+    ],
+    "template-curly-spacing": [
+      "error"
     ],
     "linebreak-style": [
       "error",
@@ -39,21 +110,129 @@
       "single",
       { "avoidEscape": true }
     ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
     "semi": [
       "error",
       "always"
+    ],
+    "newline-per-chained-call": [
+      "error"
+    ],
+    "no-whitespace-before-property": [
+      "error"
     ],
     "no-useless-constructor": [
       "error"
     ],
     "no-console": [
-      "error",
+      "warn",
       { "allow": ["warn", "error"] }
     ],
     "no-multi-spaces": [
       "error",
       { "ignoreEOLComments": true }
     ],
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "padded-blocks": [
+      "warn",
+      "never"
+    ],
+    "no-new-wrappers": [
+      "error"
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": [
+      "error"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "arrow-spacing": [
+      "error"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "never"
+    ],
+    "prefer-rest-params": [
+      "error"
+    ],
+    "prefer-spread": [
+      "error"
+    ],
+    "dot-notation": [
+      "error"
+    ],
+    "one-var": [
+      "error",
+      "never"
+    ],
+    "no-multi-assign": [
+      "error"
+    ],
+    "eqeqeq": [
+      "error"
+    ],
+    "no-unneeded-ternary": [
+      "error"
+    ],
+    "no-nested-ternary": [
+      "warn"
+    ],
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
+    "curly": [
+      "error",
+      "multi-or-nest",
+      "consistent"
+    ],
+    "nonblock-statement-body-position": [
+      "error",
+      "below"
+    ],
+    "no-else-return": [
+      "error"
+    ],
+    "spaced-comment": [
+      "error",
+      "always"
+    ],
+    "eol-last": [
+      "error"
+    ],
+    "space-infix-ops": [
+      "error"
+    ],
+    "keyword-spacing": [
+      "error",
+      { 
+        "overrides": {
+          "function": { "after": false }
+        }
+      }
+    ],
+
+    // React
     "react/prefer-es6-class": [
       "error",
       "always"
@@ -61,6 +240,66 @@
     "react/prefer-stateless-function": [
       "error",
       { "ignorePureComponents": false }
+    ],
+    "react/jsx-tag-spacing": [
+      "error"
+    ],
+    "react/jsx-closing-bracket-location": [
+      "error"
+    ],
+    "react/jsx-closing-tag-location": [
+      "error"
+    ],
+    "react/self-closing-comp": [
+      "error",
+      { "component": true }
+    ],
+    "react/jsx-curly-spacing": [
+      "error",
+      {"when": "never", "allowMultiline": false, "children": true}
+    ],
+    "react/jsx-boolean-value": [
+      "warn",
+      "never"
+    ],
+    "react/no-string-refs": [
+      "error"
+    ],
+    "react/jsx-wrap-multilines": [
+      "error"
+    ],
+    "react/jsx-no-bind": [
+      "error"
+    ],
+    "react/require-render-return": [
+      "error"
+    ],
+
+    // Accessibility
+    "jsx-a11y/img-has-alt": [
+      "error"
+    ],
+    "jsx-a11y/img-redundant-alt": [
+      "error",
+      { "words": ["Foto", "Imagen"] }
+    ],
+    "jsx-a11y/aria-role": [
+      "error",
+      { "ignoreNonDom": true }
+    ],
+    "jsx-a11y/no-access-key": [
+      "error"
+    ],
+
+    //Import
+    "import/no-mutable-exports": [
+      "error"
+    ],
+    "import/prefer-default-export": [
+      "error"
+    ],
+    "import/first": [
+      "error"
     ]
   }
 }

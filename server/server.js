@@ -39,13 +39,13 @@ app.use((req, res) => {
 });
 
 const port = process.env.PORT || localConfig.port;
-app.listen(port, function(){
+app.listen(port, () => {
   logger.info(`CWD: ${cwd}`);
   logger.info(`Server listening on http://localhost:${port}/appmetrics-dash`);  
   logger.info(`Server listening on http://localhost:${port}`);
 });
 
-app.use(function (err, req, res) {
+app.use((err, req, res) => {
   logger.error(err.message);
   res.status(500);
   res.json({ message: err.message });

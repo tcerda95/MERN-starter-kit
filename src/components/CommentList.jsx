@@ -29,20 +29,18 @@ CommentList.propTypes = {
 };
 
 export default function CommentList({ data, onCommentDelete }) {
-  let commentNodes = data.map(comment => {
-    return (
-      <Comment
-        author={comment.author}
-        uniqueID={comment['_id']}
-        key={comment['_id']}
-        imageURL={comment['imageURL']}
-        twitter={comment['twitter']}
-        onCommentDelete={onCommentDelete}
-      >
-        {comment.text}
-      </Comment>
-    );
-  });
+  const commentNodes = data.map(comment => (
+    <Comment
+      author={comment.author}
+      uniqueID={comment._id}
+      key={comment._id}
+      imageURL={comment.imageURL}
+      twitter={comment.twitter}
+      onCommentDelete={onCommentDelete}
+    >
+      {comment.text}
+    </Comment>
+  ));
 
   return (
     <div>

@@ -24,7 +24,6 @@ import marked from 'marked';
 import 'bulma/css/bulma.css';
 
 export default class Comment extends Component {
-
   static propTypes = {
     uniqueID: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
@@ -34,14 +33,14 @@ export default class Comment extends Component {
     children: PropTypes.node    
   }
 
-  deleteComment = (e) => {
+  deleteComment = e => {
     e.preventDefault();
-    let id = this.props.uniqueID;
+    const id = this.props.uniqueID;
     this.props.onCommentDelete(id);
   }
 
   rawMarkup() {
-    let rawMarkup = marked(this.props.children.toString());
+    const rawMarkup = marked(this.props.children.toString());
     return { __html: rawMarkup };
   }
 
@@ -78,7 +77,8 @@ export default class Comment extends Component {
             <button
               onClick={this.deleteComment} 
               className="delete"
-            ></button>
+            >
+            </button>
           </div>
         </article>
       </div>

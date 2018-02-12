@@ -1,15 +1,17 @@
 import sinon from 'sinon';
 
-export function spyConsoleError() {
-  sinon.stub(console, 'error');
+const util = {
+  spyConsoleError() {
+    sinon.stub(console, 'error');
+  },
+
+  restoreConsoleError() {
+    console.error.restore();
+  },
+
+  expectMissingProp(prop, component) {
+    sinon.assert.calledWithMatch(console.error, new RegExp(`The prop \`${prop}\` is marked as required in \`${component}\``));
+  }
 };
 
-export function restoreConsoleError() {
-  console.error.restore();
-}
-
-export function expectMissingProp(prop, component) {
-  sinon.assert.calledWithMatch(console.error,
-    new RegExp(`The prop \`${prop}\` is marked as required in \`${component}\``));
-};
-
+export default util;

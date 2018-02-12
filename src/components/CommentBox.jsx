@@ -48,14 +48,14 @@ export default class CommentBox extends Component {
       });
   }
 
-  handleCommentSubmit = (comment) => {
+  handleCommentSubmit = comment => {
     comment.imageURL = this.state.userInfo.imageURL;
     comment.twitter = this.state.userInfo.twitter;
     comment.author = this.state.userInfo.author;
 
-    let comments = this.state.data;
+    const comments = this.state.data;
     comment._id = Date.now();
-    let newComments = comments.concat([comment]);
+    const newComments = comments.concat([comment]);
     this.setState({ data: newComments });
 
     axios.post(this.props.url, comment)
@@ -64,14 +64,14 @@ export default class CommentBox extends Component {
       });
   }
 
-  handleLogin = (loginInfo) => {
+  handleLogin = loginInfo => {
     const userInfo = {
       author: loginInfo.author, 
       imageURL: loginInfo.imageURL,
       twitter: loginInfo.twitter
     };
 
-    this.setState({ userInfo: userInfo });
+    this.setState({ userInfo });
 
     axios.post(`${this.props.url}/login`, loginInfo)
       .then(res => {
@@ -82,7 +82,7 @@ export default class CommentBox extends Component {
       });
   }
 
-  handleLogout = (e) => {
+  handleLogout = e => {
     axios.post(`${this.props.url}/logout`)
       .then(res => {
         localStorage.removeItem('userInfo');
@@ -93,12 +93,9 @@ export default class CommentBox extends Component {
       });
   }
 
-  handleCommentDelete = (id) => {
-    let comments = this.state.data;
-
-    let newComments = comments.filter((t) => {
-      return t._id !== id; 
-    });
+  handleCommentDelete = id => {
+    const comments = this.state.data;
+    const newComments = comments.filter(t => t._id !== id);
 
     this.setState({ data: newComments });
 
@@ -121,13 +118,13 @@ export default class CommentBox extends Component {
             data={this.state.data}
             onCommentDelete={this.handleCommentDelete}
           />
-          <hr/>
+          <hr></hr>
           <CommentForm 
             imageURL={this.state.userInfo.imageURL}
             onCommentSubmit={this.handleCommentSubmit}
             onLogout={this.handleLogout}
           />
-          <br/>
+          <br></br>
           <Login 
             onLogin={this.handleLogin}
           />

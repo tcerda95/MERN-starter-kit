@@ -32,7 +32,7 @@ export default class Login extends Component {
     imageURL: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg'    
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const author = this.state.author.trim();
     const twitter = this.state.twitter.trim();
@@ -43,21 +43,22 @@ export default class Login extends Component {
 
     this.props.onLogin(
       {
-        author: author,
-        imageURL: imageURL,
-        twitter: twitter
-      });
+        author,
+        imageURL,
+        twitter
+      }
+    );
   }
 
-  handleAuthorChange = (e) => {
+  handleAuthorChange = e => {
     this.setState({ author: e.target.value });
   }
 
-  handleTwitterChange = (e) => {
+  handleTwitterChange = e => {
     this.setState({ twitter: e.target.value });
   }
 
-  handleImageURLChange = (e) => {
+  handleImageURLChange = e => {
     this.setState({ imageURL: e.target.value });
   }
 
@@ -69,7 +70,8 @@ export default class Login extends Component {
             <input className="input" type="text"
               onChange={this.handleAuthorChange}
               value={this.state.author}
-              placeholder="full name" />
+              placeholder="full name" 
+            />
             <span className="icon is-small is-left">
               <i className="fa fa-envelope"></i>
             </span>
@@ -80,7 +82,8 @@ export default class Login extends Component {
             <input className="input" type="text"
               onChange={this.handleImageURLChange}
               value={this.state.imageURL}
-              placeholder="image URL" />
+              placeholder="image URL" 
+            />
             <span className="icon is-small is-left">
               <i className="fa fa-image"></i>
             </span>
@@ -91,7 +94,8 @@ export default class Login extends Component {
             <input className="input" type="text"
               onChange={this.handleTwitterChange}
               value={this.state.twitter}
-              placeholder="twitter handle" />
+              placeholder="twitter handle" 
+            />
             <span className="icon is-small is-left">
               <i className="fa fa-twitter"></i>
             </span>

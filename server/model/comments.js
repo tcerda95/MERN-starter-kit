@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-var CommentsSchema = new Schema({
+const CommentsSchema = new Schema({
   author: { type: String, required: true },
   text: { type: String, required: true },
   twitter: String,
