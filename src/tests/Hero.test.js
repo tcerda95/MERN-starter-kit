@@ -1,7 +1,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 
 describe('React Hero testing', () => {
   let wrapper;
@@ -19,6 +18,6 @@ describe('React Hero testing', () => {
   });
 
   it('is better snapshot testing for regression render tests', () => {
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,7 +1,6 @@
 import './tempPolyfills';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import mongoose from 'mongoose';
 import sinon from 'sinon';
  
 configure({ adapter: new Adapter() });
@@ -11,7 +10,6 @@ console.error = msg => {
   throw new Error(msg);
 };
 
-mongoose.Promise = Promise;
 
 global.localStorage = {
   setItem: sinon.spy(),
