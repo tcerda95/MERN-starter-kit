@@ -1,7 +1,6 @@
 node_modules
 node_modules_linux
 server/localdev-config.json
-# See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
@@ -15,6 +14,7 @@ server/localdev-config.json
 # misc
 .DS_Store
 .env
+.idea
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
