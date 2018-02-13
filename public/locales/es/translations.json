@@ -1,0 +1,18 @@
+{
+    "addComment": "Comentario...",
+    "post": "Comentar",
+    "logout": "Cerrar Sesión",
+
+    "about": "Acerca de",
+    "description": "MERN stack kit de inicio",
+
+    "example": "Ejemplo web app MERN",
+    "license": "Código fuente licenciado",
+
+    "title": "Comentario de la Red Social",
+    "subtitle": "Aplicación ejemplo MERN stack",
+
+    "home": "Inicio",
+
+    "login": "Iniciar Sesión"
+}

@@ -15,17 +15,21 @@ describe('React CommentForm testing', () => {
     onCommentSubmitSpy = sinon.stub();
     onLogoutSpy = sinon.spy();
     preventDefaultSpy = sinon.spy();
-    wrapper = shallow(<CommentForm onCommentSubmit={onCommentSubmitSpy} onLogout={onLogoutSpy} />);
+    wrapper = shallow(<CommentForm t={t} onCommentSubmit={onCommentSubmitSpy} onLogout={onLogoutSpy} />);
   });
 
   it('should raise an error if any required props is missing', () => {
     propTypesUtils.spyConsoleError();
 
-    shallow(<CommentForm />);
+    shallow(<CommentForm t={t} />);
     propTypesUtils.expectMissingProp('onCommentSubmit', 'CommentForm');
     propTypesUtils.expectMissingProp('onLogout', 'CommentForm');
 
     propTypesUtils.restoreConsoleError();
+  });
+
+  it('should match snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should have value "a" on keypress "a"', () => {

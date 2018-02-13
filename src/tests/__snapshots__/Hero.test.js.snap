@@ -13,12 +13,12 @@ exports[`React Hero testing is better snapshot testing for regression render tes
       <h1
         className="title"
       >
-        Social Media Comments
+        title
       </h1>
       <h2
         className="subtitle"
       >
-        MERN application example
+        subtitle
       </h2>
       <NavLinks />
     </div>

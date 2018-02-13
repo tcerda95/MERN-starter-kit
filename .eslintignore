@@ -1,4 +1,5 @@
-/src/registerServerWorker.js
+/src/registerServiceWorker.js
+/src/tests/config/setupTests.js
 node_modules
 node_modules_linux
 server/localdev-config.json

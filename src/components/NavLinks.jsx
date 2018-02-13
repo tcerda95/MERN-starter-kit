@@ -1,16 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { translate } from 'react-i18next';
 import '../styles/NavLinks.css';
 
-export default function NavLinks() {
-  return (
-    <ul className="inline-list">
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/about">About</NavLink>        
-      </li>
-    </ul>
-  );
-}
+const NavLinks = ({ t }) => (
+  <ul className="inline-list">
+    <li>
+      <NavLink exact to="/">{t('home')}</NavLink>
+    </li>
+    <li>
+      <NavLink to="/about">{t('about')}</NavLink>
+    </li>
+  </ul>
+);
+
+export default translate()(NavLinks);

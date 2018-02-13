@@ -6,9 +6,8 @@ import NotFound from './components/NotFound';
 import Footer from './components/Footer';
 import { Route, Switch } from 'react-router-dom';
 
-
 // Wrapper function for passing props to a Route component
-// Wrappers should be passed to the render prop of Route
+// Wrappers should be passed to the render prop of Route instead of component
 const CommentBoxWrapper = () => (
   <CommentBox 
     url="/api/comments"
@@ -22,8 +21,8 @@ export default function App() {
       <Hero />
       <Switch>
         <Route exact path="/" render={CommentBoxWrapper} />
-        <Route path="/about" render={About} />
-        <Route render={NotFound} />
+        <Route path="/about" component={About} />
+        <Route component={NotFound} />
       </Switch>
       <Footer />
     </div>

@@ -1,10 +1,11 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 
-export default function About() {
-  return (
-    <div>
-      <h1>About</h1>
-      <p>MERN stack starter kit</p>
-    </div>
-  );
-}
+const About = ({ t }) => (
+  <div>
+    <h1>{t('about')}</h1>
+    <p>{t('description')}</p>
+  </div>
+);
+
+export default translate()(About);

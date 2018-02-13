@@ -23,6 +23,9 @@
     "jsx-a11y",
     "import"
   ],
+  "globals": {
+    "t": false
+  },
   "rules": {
     // Eslint
     "camelcase": [
@@ -233,6 +236,10 @@
     ],
 
     // React
+    "react/prop-types": [
+      "error",
+      { "ignore": ["t"] }
+    ],
     "react/prefer-es6-class": [
       "error",
       "always"

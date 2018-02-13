@@ -6,7 +6,7 @@ describe('React Hero testing', () => {
   let wrapper;
 
   beforeEach(() => { 
-    wrapper = shallow(<Hero />);
+    wrapper = shallow(<Hero t={t} />);
   });
 
   it('renders two <div>', () => {

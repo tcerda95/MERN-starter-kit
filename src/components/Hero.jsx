@@ -1,21 +1,22 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import NavLinks from './NavLinks';
 import 'bulma/css/bulma.css';
 
-export default function Hero(props) {
-  return (
-    <section className="hero is-info">
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">
-            Social Media Comments
-          </h1>
-          <h2 className="subtitle">
-            MERN application example
-          </h2>
-          <NavLinks />
-        </div>
+const Hero = ({ t }) => (
+  <section className="hero is-info">
+    <div className="hero-body">
+      <div className="container">
+        <h1 className="title">
+          {t('title')}
+        </h1>
+        <h2 className="subtitle">
+          {t('subtitle')}
+        </h2>
+        <NavLinks />
       </div>
-    </section>
-  );
-}
+    </div>
+  </section>
+);
+
+export default translate()(Hero);
