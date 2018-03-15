@@ -27,6 +27,7 @@ app.use('/api', apiRouter);
 if (process.env.NODE_ENV === 'production') {
   // Serve static revved files with uncoditional cache
   app.use(serveStatic(path.join(cwd, 'build'), {
+    index: false,
     setHeaders: (res, path) => {
       if (revUtils.isRevved(path))
         res.setHeader('Cache-Control', 'public, immutable, max-age=31536000');      
