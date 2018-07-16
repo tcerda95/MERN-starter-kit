@@ -1,16 +1,12 @@
 .inline-list {
-    display: inline;
-}
+  display: inline; }
 
 .inline-list li {
-    display: inline;
-    margin: 5px;
-}
+  display: inline;
+  margin: 5px; }
 
 .inline-list:hover {
-    color: #E0E0E0;
-}
+  color: #E0E0E0; }
 
 .active {
-    color: #E0E0E0 !important;
-}
+  color: #E0E0E0 !important; }
