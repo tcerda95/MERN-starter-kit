@@ -1,4 +1,3 @@
-
 const service = {};
 
 service.isRevved = path => {

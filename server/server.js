@@ -1,9 +1,9 @@
+const PORT = 3000;
 const appName = require('./../package').name;
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const log4js = require('log4js');
-const localConfig = require('./config/local.json');
 const path = require('path');
 const serveStatic = require('serve-static');
 const revUtils = require('./services/revUtils');
@@ -46,9 +46,8 @@ app.use((req, res) => {
   res.json({ message: '404 - Not Found' });
 });
 
-const port = process.env.PORT || localConfig.port;
+const port = process.env.PORT || PORT;
 app.listen(port, () => {
   logger.info(`CWD: ${cwd}`);
-  logger.info(`Server listening on http://localhost:${port}/appmetrics-dash`);  
   logger.info(`Server listening on http://localhost:${port}`);
 });
