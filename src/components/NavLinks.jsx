@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { translate } from 'react-i18next';
-import '../styles/NavLinks.css';
+import '../styles/NavLinks.scss';
 
 const NavLinks = ({ t }) => (
   <ul className="inline-list">

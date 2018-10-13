@@ -15,7 +15,7 @@ const Footer = ({ t }) => (
         </p>
         <p>
           <a className="icon" href="https://github.com/IBM-Bluemix/node-MERN-stack">
-            <i className="fa fa-github"></i>
+            <i className="fa fa-github" />
           </a>
         </p>
       </div>

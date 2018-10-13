@@ -33,16 +33,19 @@ export default class Comment extends Component {
               <strong>{this.props.author}</strong> <small>@{this.props.twitter}</small> <small>31m</small>
               <br />
             </div>
+            <span>
+              {this.props.children}
+            </span>
             <nav className="level is-mobile">
               <div className="level-left">
-                <a className="level-item">
-                  <span className="icon is-small"><i className="fa fa-reply"></i></span>
+                <a className="level-item" href="#">
+                  <span className="level-item icon is-small"><i className="fa fa-reply" /></span>
                 </a>
-                <a className="level-item">
-                  <span className="icon is-small"><i className="fa fa-retweet"></i></span>
+                <a className="level-item" href="#">
+                  <span className="icon is-small"><i className="fa fa-retweet" /></span>
                 </a>
-                <a className="level-item">
-                  <span className="icon is-small"><i className="fa fa-heart"></i></span>
+                <a className="level-item" href="#">
+                  <span className="icon is-small"><i className="fa fa-heart" /></span>
                 </a>
               </div>
             </nav>
@@ -51,8 +54,7 @@ export default class Comment extends Component {
             <button
               onClick={this.deleteComment} 
               className="delete"
-            >
-            </button>
+            />
           </div>
         </article>
       </div>

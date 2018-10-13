@@ -9,10 +9,15 @@ const serveStatic = require('serve-static');
 const revUtils = require('./services/revUtils');
 const cwd = process.cwd();
 
+log4js.configure({
+  appenders: { console: { type: 'console' } },
+  categories: { default: { appenders: ['console'], level: process.env.LOG_LEVEL || 'debug' } }
+});
+
 const logger = log4js.getLogger(appName);
 const app = express();
 
-app.use(log4js.connectLogger(logger, { level: process.env.LOG_LEVEL || 'info' }));
+app.use(log4js.connectLogger(logger, { level: process.env.LOG_LEVEL || 'debug' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(compression());

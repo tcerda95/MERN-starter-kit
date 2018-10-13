@@ -57,7 +57,7 @@ class Login extends Component {
               placeholder="full name" 
             />
             <span className="icon is-small is-left">
-              <i className="fa fa-envelope"></i>
+              <i className="fa fa-envelope" />
             </span>
           </p>
         </div>
@@ -69,7 +69,7 @@ class Login extends Component {
               placeholder="image URL" 
             />
             <span className="icon is-small is-left">
-              <i className="fa fa-image"></i>
+              <i className="fa fa-image" />
             </span>
           </p>
         </div>
@@ -81,7 +81,7 @@ class Login extends Component {
               placeholder="twitter handle" 
             />
             <span className="icon is-small is-left">
-              <i className="fa fa-twitter"></i>
+              <i className="fa fa-twitter" />
             </span>
           </p>
         </div>

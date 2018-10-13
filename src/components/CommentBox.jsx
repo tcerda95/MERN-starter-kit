@@ -35,7 +35,6 @@ export default class CommentBox extends Component {
     comment.author = this.state.userInfo.author;
 
     const comments = this.state.data;
-    comment._id = Date.now();
     const newComments = comments.concat([comment]);
     this.setState({ data: newComments });
 
@@ -53,14 +52,7 @@ export default class CommentBox extends Component {
     };
 
     this.setState({ userInfo });
-
-    axios.post(`${this.props.url}/login`, loginInfo)
-      .then(res => {
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
   }
 
   handleLogout = e => {
@@ -99,13 +91,13 @@ export default class CommentBox extends Component {
             data={this.state.data}
             onCommentDelete={this.handleCommentDelete}
           />
-          <hr></hr>
+          <hr />
           <CommentForm 
             imageURL={this.state.userInfo.imageURL}
             onCommentSubmit={this.handleCommentSubmit}
             onLogout={this.handleLogout}
           />
-          <br></br>
+          <br />
           <Login 
             onLogin={this.handleLogin}
           />

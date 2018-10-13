@@ -10,9 +10,7 @@ const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URL : 'm
   sslCA
 */
 
-const options = {
-  useMongoClient: true
-};
+const options = { useNewUrlParser: true };
 
 const errHandler = err => {
   if (err) {
