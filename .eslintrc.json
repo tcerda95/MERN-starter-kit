@@ -34,7 +34,8 @@
   "rules": {
     // Eslint
     "camelcase": [
-      "error"
+      "error",
+      { "properties": "never" }
     ],
     "no-unused-vars": [
       "error", 
