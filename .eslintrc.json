@@ -282,7 +282,8 @@
       "error"
     ],
     "react/jsx-no-bind": [
-      "error"
+      "error",
+      { "allowArrowFunctions": true }
     ],
     "react/require-render-return": [
       "error"
