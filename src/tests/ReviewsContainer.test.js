@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 
 describe('Reviews Container', () => {
   it('should update "state.reviews" on mount', async () => {
-    const url = 'path/to/request';
+    const url = '/api/reviews';
     const reviews = ['a review', 'another review'];
 
     // Must setup stub before shallow rendering since request is done on compoentDidMount

@@ -1,8 +1,8 @@
-const ctrl = require('../../controllers/comments');
-const Comment = require('../../model/comments');
+const ctrl = require('../../controllers/reviews');
+const Review = require('../../model/reviews');
 const sinon = require('sinon');
 
-describe('Comments Controller', () => {
+describe('Reviews Controller', () => {
   const { assert } = sinon;
   let req;
   let res;
@@ -20,25 +20,25 @@ describe('Comments Controller', () => {
     };
   });
 
-  describe('.listComments', () => {
+  describe('.listReviews', () => {
     beforeEach(() => {
-      sinon.stub(Comment, 'find');
+      sinon.stub(Review, 'find');
     });
 
     afterEach(() => {
-      Comment.find.restore();
+      Review.find.restore();
     });
 
-    it('should return status 200 with the comment list as json on success', async () => {
-      const expectedComments = ['a comment', 'another comment'];
-      Comment.find.resolves(expectedComments);
+    it('should return status 200 with the reviews list as json on success', async () => {
+      const expectedReviews = ['a review', 'another review'];
+      Review.find.resolves(expectedReviews);
 
       try {
-        await ctrl.listComments(req, res);
+        await ctrl.listReviews(req, res);
       }
       finally {
         assertOnceWith(res.status, 200);
-        assertOnceWith(res.json, expectedComments);
+        assertOnceWith(res.json, expectedReviews);
       }
     });
 
@@ -47,10 +47,10 @@ describe('Comments Controller', () => {
         message: 'fatal error'
       };
       
-      Comment.find.rejects(expectedError);
+      Review.find.rejects(expectedError);
 
       try {
-        await ctrl.listComments(req, res);
+        await ctrl.listReviews(req, res);
       }
       finally {
         assertOnceWith(res.status, 500);
