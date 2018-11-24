@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Form, Button, FormGroup, Label, Input, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
+import '../styles/ReviewForm.scss';
 
 export default class ReviewForm extends Component {
   static propTypes = {
@@ -11,6 +13,7 @@ export default class ReviewForm extends Component {
       recommend: PropTypes.bool.isRequired
     }).isRequired,
     onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     submitting: PropTypes.bool
   }
 
@@ -41,26 +44,41 @@ export default class ReviewForm extends Component {
     const { submitting, onSubmit } = this.props;
 
     return (
-      <form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} className="review-form">
         <h1>Review Form</h1>
+        
+        <FormGroup row>
+          <Col xs={6}>
+            <Input type="text" id="firstName" name="firstName" value={firstName} onChange={this.handleChange} placeholder="First name" required />
+          </Col>
+        
+          <Col xs={6}>
+            <Input type="text" id="lastName" name="lastName" value={lastName} onChange={this.handleChange} placeholder="Last name" required />
+          </Col>
+        </FormGroup>
 
-        <label htmlFor="firstName">First name</label>
-        <input type="text" id="firstName" name="firstName" value={firstName} onChange={this.handleChange} required />
+        <FormGroup>
+          <Input type="textarea" id="text" name="text" value={text} onChange={this.handleChange} placeholder="Comment (optional)" />
+        </FormGroup>
 
-        <label htmlFor="lastName">Last name</label>
-        <input type="text" id="lastName" name="lastName" value={lastName} onChange={this.handleChange} required />
+        <FormGroup row>
+          <Col xs={1}>
+            <Label htmlFor="score">Score</Label>
+          </Col>
+          <Col xs={5}>
+            <ScoreInput min={1} max={10} name="score" id="score" value={score} onChange={this.handleChange} />
+          </Col>
 
-        <label htmlFor="text">Comment</label>
-        <textarea id="text" name="text" value={text} onChange={this.handleChange} />
+          <Col xs={6}>
+            <Label htmlFor="recommend">
+              Recommend
+              <Input type="checkbox" name="recommend" id="recommend" checked={recommend} onChange={this.handleChange} />
+            </Label>
+          </Col>
+        </FormGroup>
 
-        <label htmlFor="score">Score</label>
-        <ScoreInput min={1} max={10} name="score" id="score" value={score} onChange={this.handleChange} />
-
-        <label htmlFor="recommend">Recommend</label>
-        <input type="checkbox" name="recommend" id="recommend" checked={recommend} onChange={this.handleChange} />
-
-        <button type="submit">{submitting ? 'Submitting' : 'Submit'}</button>
-      </form>
+        <Button type="submit" color="primary" outline>{submitting ? 'Submitting' : 'Submit'}</Button>
+      </Form>
     );
   }
 }
@@ -72,13 +90,13 @@ const ScoreInput = ({ min, max, ...props }) => {
     options.push(<option key={i} value={i}>{i}</option>);
 
   return (
-    <select {...props}>
+    <Input type="select" {...props}>
       {options}
-    </select>
+    </Input>
   );
 };
 
 ScoreInput.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired
-}
+};
