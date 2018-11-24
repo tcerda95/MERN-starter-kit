@@ -31,7 +31,7 @@ ReviewItem.propTypes = {
     fullName: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     text: PropTypes.string
-  })
+  }).isRequired
 };
 
 export default ReviewsList;
