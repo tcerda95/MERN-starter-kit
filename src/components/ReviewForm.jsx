@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Button, FormGroup, Label, Input, Col } from 'reactstrap';
+import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 import '../styles/ReviewForm.scss';
 
-export default class ReviewForm extends Component {
+class ReviewForm extends Component {
   static propTypes = {
     value: PropTypes.shape({
       firstName: PropTypes.string.isRequired,
@@ -41,29 +42,29 @@ export default class ReviewForm extends Component {
 
   render() {
     const { firstName, lastName, text, score, recommend } = this.props.value;
-    const { submitting, onSubmit } = this.props;
+    const { t, submitting, onSubmit } = this.props;
 
     return (
       <Form onSubmit={onSubmit} className="review-form">
-        <h1>Review Form</h1>
+        <h1>{t('reviewForm')}</h1>
         
         <FormGroup row>
           <Col xs={6}>
-            <Input type="text" id="firstName" name="firstName" value={firstName} onChange={this.handleChange} placeholder="First name" required />
+            <Input type="text" id="firstName" name="firstName" value={firstName} onChange={this.handleChange} placeholder={t('firstName')} required />
           </Col>
         
           <Col xs={6}>
-            <Input type="text" id="lastName" name="lastName" value={lastName} onChange={this.handleChange} placeholder="Last name" required />
+            <Input type="text" id="lastName" name="lastName" value={lastName} onChange={this.handleChange} placeholder={t('lastName')} required />
           </Col>
         </FormGroup>
 
         <FormGroup>
-          <Input type="textarea" id="text" name="text" value={text} onChange={this.handleChange} placeholder="Comment (optional)" />
+          <Input type="textarea" id="text" name="text" value={text} onChange={this.handleChange} placeholder={t('comment')} />
         </FormGroup>
 
         <FormGroup row>
           <Col xs={1}>
-            <Label htmlFor="score">Score</Label>
+            <Label htmlFor="score">{t('score')}</Label>
           </Col>
           <Col xs={5}>
             <ScoreInput min={1} max={10} name="score" id="score" value={score} onChange={this.handleChange} />
@@ -71,13 +72,13 @@ export default class ReviewForm extends Component {
 
           <Col xs={6}>
             <Label htmlFor="recommend">
-              Recommend
+              {t('recommend')}
               <Input type="checkbox" name="recommend" id="recommend" checked={recommend} onChange={this.handleChange} />
             </Label>
           </Col>
         </FormGroup>
 
-        <Button type="submit" color="primary" outline>{submitting ? 'Submitting' : 'Submit'}</Button>
+        <Button type="submit" color="primary" outline>{submitting ? t('submitting') : t('submit')}</Button>
       </Form>
     );
   }
@@ -100,3 +101,5 @@ ScoreInput.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired
 };
+
+export default translate('reviewForm')(ReviewForm);

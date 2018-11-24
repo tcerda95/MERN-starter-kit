@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { ListGroup, ListGroupItem, Badge, Button } from 'reactstrap';
 import '../styles/ReviewsList.scss';
 
-const ReviewsList = ({ reviews, onDelete }) => (
+const ReviewsList = ({ reviews, onDelete, t }) => (
   <ListGroup>
-    {reviews.map((r, i) => <ReviewItem key={r.id} review={r} onDelete={onDelete} />)}
+    {reviews.map((r, i) => <ReviewItem t={t} key={r.id} review={r} onDelete={onDelete} />)}
   </ListGroup>
 );
 
@@ -14,9 +15,9 @@ ReviewsList.propTypes = {
   onDelete: PropTypes.func.isRequired
 };
 
-const ReviewItem = ({ review, onDelete }) => {
+const ReviewItem = ({ review, onDelete, t }) => {
   const { score, fullName, text, recommend } = review;
-  const badgeText = recommend ? 'Recommends' : 'Does not recommend';
+  const badgeText = recommend ? t('recommends') : t('notRecommends');
   const badgeColor = recommend ? 'success' : 'warning';
 
   return (
@@ -25,9 +26,9 @@ const ReviewItem = ({ review, onDelete }) => {
       <div>
         <h4>{fullName}</h4>
         <Badge color={badgeColor} className="recommend-badge">{badgeText}</Badge>
-        <p>{text ? text : 'No comments'}</p>
+        <p>{text ? text : t('noComments')}</p>
       </div>
-      <Button color="danger" outline onClick={() => onDelete(review)}>Delete</Button>
+      <Button color="danger" outline onClick={() => onDelete(review)}>{t('delete')}</Button>
     </ListGroupItem>
   );
 };
@@ -42,4 +43,4 @@ ReviewItem.propTypes = {
   onDelete: PropTypes.func.isRequired
 };
 
-export default ReviewsList;
+export default translate()(ReviewsList);

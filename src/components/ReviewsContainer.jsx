@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
+import { translate } from 'react-i18next';
 import ReviewsList from './ReviewsList';
 import ReviewForm from './ReviewForm';
 import apiService from '../services/apiService';
 import '../styles/ReviewsContainer.scss';
 
-export default class ReviewsContainer extends Component {
+class ReviewsContainer extends Component {
   state = {
     reviews: [],
     reviewValue: undefined,
@@ -57,14 +58,17 @@ export default class ReviewsContainer extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const { reviews, reviewValue, submitting } = this.state;
 
     return (
       <Container className="reviews-container">
-        {reviews.length > 0 && <h1>Reviews</h1>}
+        {reviews.length > 0 && <h1>{t('reviews')}</h1>}
         <ReviewsList reviews={reviews} onDelete={this.handleDelete} />
         <ReviewForm value={reviewValue} submitting={submitting} onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </Container>
     );
   }
 }
+
+export default translate()(ReviewsContainer);

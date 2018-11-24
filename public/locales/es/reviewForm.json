@@ -1,0 +1,10 @@
+{
+    "reviewForm": "Crear Reseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "comment": "Comentario (opcional)",
+    "score": "Puntaje",
+    "recommend": "Recomendar",
+    "submitting": "Creando...",
+    "submit": "Crear"
+}

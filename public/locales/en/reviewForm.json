@@ -1,0 +1,10 @@
+{
+    "reviewForm": "Review Form",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "comment": "Comment (optional)",
+    "score": "Score",
+    "recommend": "Recommend",
+    "submitting": "Submitting...",
+    "submit": "Submit"
+}

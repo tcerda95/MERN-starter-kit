@@ -1,18 +1,7 @@
 {
-    "addComment": "Add comment...",
-    "post": "Post",
-    "logout": "Logout",
-
-    "about": "About",
-    "description": "MERN stack starter kit",
-
-    "example": "MERN example",
-    "license": "The source code is licensed",
-
-    "title": "Social Media Comments",
-    "subtitle": "MERN application example",
-
-    "home": "Home",
-
-    "login": "Login"
+    "reviews": "Reviews",
+    "recommends": "Recommends",
+    "noRecommends": "Does not recommend",
+    "noComments": "No comments",
+    "delete": "Delete"
 }
