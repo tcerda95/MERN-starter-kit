@@ -6,6 +6,7 @@ const ctrl = {};
 ctrl.listReviews = async (req, res) => {
   try {
     const reviews = await Review.find();
+
     responseService.json(res, 200, reviews);
   }
   catch (err) {
@@ -18,18 +19,20 @@ ctrl.getReview = async (req, res) => {
   try {
     const { id } = req.params;
     const review = await Review.findById(id);
+
     responseService.json(res, 200, review);
   }
   catch (err) {
     logger.warn(err.message);
     responseService.json(res, 404, err);
   }
-}
+};
 
 ctrl.createReview = async (req, res) => {
   try {
     logger.info('Creating review');
     const review = await Review.create(req.body);
+    
     responseService.json(res, 201, review);
   }
   catch (err) {

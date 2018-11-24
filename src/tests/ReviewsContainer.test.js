@@ -1,22 +1,22 @@
 import React from 'react';
 import sinon from 'sinon';
 import axios from 'axios';
-import CommentBox from '../components/CommentBox';
+import ReviewsContainer from '../components/ReviewsContainer';
 import { shallow } from 'enzyme';
 
-describe('Comment Box', () => {
-  it('should update "state.data" on mount', async () => {
+describe('Reviews Container', () => {
+  it('should update "state.reviews" on mount', async () => {
     const url = 'path/to/request';
-    const comments = ['a comment', 'another comment'];
+    const reviews = ['a review', 'another review'];
 
     // Must setup stub before shallow rendering since request is done on compoentDidMount
-    sinon.stub(axios, 'get').resolves({ data: comments });
+    sinon.stub(axios, 'get').resolves({ data: reviews });
 
-    const wrapper = shallow(<CommentBox url={url} pollInterval={10000} />);
+    const wrapper = shallow(<ReviewsContainer />);
 
     await wrapper.instance().componentDidMount();
 
-    expect(wrapper.state('data')).toEqual(comments);
+    expect(wrapper.state('reviews')).toEqual(reviews);
     sinon.assert.called(axios.get);
     sinon.assert.calledWith(axios.get, url);
 
