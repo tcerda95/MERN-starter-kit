@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const logger = require('log4js').getLogger('db');
 
-const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URL : 'mongodb://localhost/mern-dev';
+const url = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URL : 'mongodb://localhost:27017/mern-dev';
 
 /*
   Additional options may need to be set for a production environment such as:
